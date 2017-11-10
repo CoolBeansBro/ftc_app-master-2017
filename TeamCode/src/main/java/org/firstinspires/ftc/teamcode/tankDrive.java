@@ -17,7 +17,7 @@ public class tankDrive extends OpMode {
     DcMotor frontRight;
     DcMotor backLeft;
     DcMotor backRight;
-//    Servo blockPull;
+   // Servo blockPull;
 
     @Override
     public void init() {
@@ -42,10 +42,10 @@ public class tankDrive extends OpMode {
 
 //        if (gamepad2.a) {
 //            blockPull.setPosition(1.0);
-//        }
-//        if (gamepad2.x) {
-//            blockPull.setPosition(0.0);
-//        }
+        //      }
+//       if (gamepad2.x) {
+//        blockPull.setPosition(0.0);
+  //      }
 
     }
 }
