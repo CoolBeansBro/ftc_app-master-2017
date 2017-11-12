@@ -17,7 +17,7 @@ public class tankDrive extends OpMode {
     DcMotor frontRight;
     DcMotor backLeft;
     DcMotor backRight;
-   //i Servo blockPull;
+   // Servo blockPull;
 
     @Override
     public void init() {
