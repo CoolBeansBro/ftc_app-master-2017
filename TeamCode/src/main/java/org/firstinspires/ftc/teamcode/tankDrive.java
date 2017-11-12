@@ -19,6 +19,10 @@ public class tankDrive extends OpMode {
     DcMotor backRight = null;
     Servo blockPull = null;
 
+    public final static double ARM_HOME = 0.0; // starting servo position
+    public final static double ARM_MIN_RANGE = 0.0; //smallest servo value(0)
+    public final static double ARM_MAX_RANGE = 0.75;// largest servo value(135)
+
     @Override
     public void init() {
         backRight = hardwareMap.dcMotor.get("motor0");
