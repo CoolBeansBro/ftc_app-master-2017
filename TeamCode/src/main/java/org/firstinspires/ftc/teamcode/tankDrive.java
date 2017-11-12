@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -9,15 +10,14 @@ import com.qualcomm.robotcore.hardware.Servo;
  * Created by Wake Robotics Member on 11/2/2017.
  */
 
-
 @TeleOp(name = "tankDrive", group = "Tank")
 public class tankDrive extends OpMode {
 
-    DcMotor frontLeft;
-    DcMotor frontRight;
-    DcMotor backLeft;
-    DcMotor backRight;
-   // Servo blockPull;
+    DcMotor frontLeft = null;
+    DcMotor frontRight = null;
+    DcMotor backLeft = null;
+    DcMotor backRight = null;
+    Servo blockPull = null;
 
     @Override
     public void init() {
@@ -35,10 +35,10 @@ public class tankDrive extends OpMode {
     @Override
     public void loop() {
 
-        frontLeft.setPower(gamepad1.left_stick_y);
-        backLeft.setPower(gamepad1.left_stick_y);
-        frontRight.setPower(gamepad1.right_stick_y);
-        backRight.setPower(gamepad1.right_stick_y);
+        frontLeft.setPower(-gamepad1.left_stick_y);
+        backLeft.setPower(-gamepad1.left_stick_y);
+        frontRight.setPower(-gamepad1.right_stick_y);
+        backRight.setPower(-gamepad1.right_stick_y);
 
 //        if (gamepad2.a) {
 //            blockPull.setPosition(1.0);
