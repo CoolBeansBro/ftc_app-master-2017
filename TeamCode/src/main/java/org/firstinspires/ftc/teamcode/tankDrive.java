@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 /**
- * Created by Wake Robotics Member on 11/2/2017.
+ * Created by Us on 11/2/2017.
  */
 
 @TeleOp(name = "tankDrive", group = "Tank")
