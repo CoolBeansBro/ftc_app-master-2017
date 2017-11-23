@@ -17,11 +17,16 @@ public class tankDrive extends OpMode {
     DcMotor frontRight;
     DcMotor backLeft;
     DcMotor backRight;
-    Servo blockPull;
+    Servo left;
+    Servo right;
 
-    public final static double ARM_HOME = 0.0; // starting servo position
-    public final static double ARM_MIN_RANGE = 0.0; //smallest servo value(0)
-    public final static double ARM_MAX_RANGE = 0.75;// largest servo value(135)
+    public final static double LEFT_HOME = 0.0; // starting servo position
+    public final static double LEFT_IN = 0.0; //smallest servo value(0)
+    public final static double LEFT_OUT = 0.75;// largest servo value(135)
+
+    public final static double RIGHT_HOME = 0.75; // starting servo position
+    public final static double RIGHT_IN = 0.75; //smallest servo value(0)
+    public final static double RIGHT_OUT = 0.0;// largest servo value(135)
 
  @Override
     public void init() {
@@ -29,12 +34,18 @@ public class tankDrive extends OpMode {
         backLeft = hardwareMap.dcMotor.get("motor1");
         frontRight = hardwareMap.dcMotor.get("motor2");
         frontLeft = hardwareMap.dcMotor.get("motor0");
-        blockPull = hardwareMap.servo.get("servo0");
+        left = hardwareMap.servo.get("servo0");
+        right = hardwareMap.servo.get("servo1");
 
         backLeft.setDirection(DcMotor.Direction.REVERSE);
         frontLeft.setDirection(DcMotor.Direction.REVERSE);
 
-    }
+        left.setPosition(LEFT_HOME);
+        right.setPosition(RIGHT_HOME);
+
+
+
+ }
 
     @Override
     public void loop() {
@@ -45,10 +56,13 @@ public class tankDrive extends OpMode {
         backRight.setPower(-gamepad1.right_stick_y/2.0);
 
         if (gamepad2.a) {
-            blockPull.setPosition(0.75);
+            left.setPosition(LEFT_IN);
+            right.setPosition(RIGHT_IN);
         }
        if (gamepad2.x) {
-            blockPull.setPosition(0.0);
+            left.setPosition(LEFT_OUT);
+            right.setPosition(RIGHT_OUT);
+
        }
 
     }
