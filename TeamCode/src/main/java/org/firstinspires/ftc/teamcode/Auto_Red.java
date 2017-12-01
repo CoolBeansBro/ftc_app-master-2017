@@ -47,7 +47,7 @@ public class Auto_Red extends LinearOpMode {
             //moving jewel push inbetween jewels
             pushJewel.setPosition(0.75);
 
-            if (colorSensor.red() == 255){
+            if (colorSensor.red() > colorSensor.blue()){
                 //move backward for 0.2 seconds
                 while (opModeIsActive() && (runtime.seconds() < 0.2)) {
                     frontLeft.setPower(0.25);
@@ -69,7 +69,7 @@ public class Auto_Red extends LinearOpMode {
             //moving jewel push back to home
             pushJewel.setPosition(0);
         }
-
+        //Moves robot into safe zone
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 1.0)) {
             frontLeft.setPower(0.5);
