@@ -29,7 +29,7 @@ public class Auto_Red extends LinearOpMode {
         backLeft = hardwareMap.dcMotor.get("motor1");
         frontRight = hardwareMap.dcMotor.get("motor2");
         frontLeft = hardwareMap.dcMotor.get("motor0");
-        pushJewel = hardwareMap.servo.get("servo1");
+        pushJewel = hardwareMap.servo.get("pushJewel");
         colorSensor = hardwareMap.colorSensor.get("colorSensor");
 
         backLeft.setDirection(DcMotor.Direction.REVERSE);
