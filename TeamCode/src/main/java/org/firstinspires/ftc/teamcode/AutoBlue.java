@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Created by Aniketh on 11/16/2017.
  */
 @Autonomous
-public class Auto_Red extends LinearOpMode {
+public class AutoBlue extends LinearOpMode {
     DcMotor frontLeft;
     DcMotor frontRight;
     DcMotor backLeft;
@@ -56,7 +56,7 @@ public class Auto_Red extends LinearOpMode {
         runtime.reset();
 
 
-        if (colorSensor.red() < colorSensor.blue()){
+        if (colorSensor.red() > colorSensor.blue()){
             //turns for 0.2 seconds
             while (opModeIsActive() && (runtime.seconds() < 0.2)) {
                 frontLeft.setPower(0.25);
@@ -128,10 +128,10 @@ public class Auto_Red extends LinearOpMode {
         //Moves robot into safe zone
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 1.0)) {
-            frontLeft.setPower(0.5);
-            backLeft.setPower(0.5);
-            frontRight.setPower(0.5);
-            backRight.setPower(0.5);
+            frontLeft.setPower(-0.5);
+            backLeft.setPower(-0.5);
+            frontRight.setPower(-0.5);
+            backRight.setPower(- 0.5);
         }
 
     }
