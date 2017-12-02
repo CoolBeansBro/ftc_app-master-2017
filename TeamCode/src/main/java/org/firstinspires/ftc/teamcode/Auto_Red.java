@@ -18,7 +18,8 @@ public class Auto_Red extends LinearOpMode {
     DcMotor backRight;
     ColorSensor colorSensor;
     Servo pushJewel;
-
+    public final static double JEWEL_UP = 0.0; //smallest servo value(0)
+    public final static double JEWEL_DOWN = 0.75;// largest servo value(135)
     private ElapsedTime runtime = new ElapsedTime();
 
 
@@ -39,36 +40,61 @@ public class Auto_Red extends LinearOpMode {
 
         colorSensor.enableLed(bLedOn);
 
+        pushJewel.setPosition(JEWEL_UP);
+
 
         waitForStart();
 
-        runtime.reset();
-        if (opModeIsActive()) {
-            //moving jewel push inbetween jewels
-            pushJewel.setPosition(0.75);
 
-            if (colorSensor.red() > colorSensor.blue()){
-                //move backward for 0.2 seconds
-                while (opModeIsActive() && (runtime.seconds() < 0.2)) {
-                    frontLeft.setPower(0.25);
-                    backLeft.setPower(0.25);
-                    frontRight.setPower(0.25);
-                    backRight.setPower(0.25);
-                }
-            }
-            else {
-                //move forward for 0.2 seconds
-                while (opModeIsActive() && (runtime.seconds() < 0.2)) {
-                    frontLeft.setPower(-0.25);
-                    backLeft.setPower(-0.25);
-                    frontRight.setPower(-0.25);
-                    backRight.setPower(-0.25);
-                }
+        //moving jewel push inbetween jewels
+        pushJewel.setPosition(JEWEL_DOWN);
+
+        runtime.reset();
+
+        while(runtime.seconds() < 2){}
+
+
+        if (colorSensor.red() > colorSensor.blue()){
+            //turns for 0.2 seconds
+            while (opModeIsActive() && (runtime.seconds() < 0.2)) {
+                frontLeft.setPower(0.25);
+                backLeft.setPower(0.25);
+                frontRight.setPower(-0.25);
+                backRight.setPower(-0.25);
             }
 
             //moving jewel push back to home
-            pushJewel.setPosition(0);
+            pushJewel.setPosition(JEWEL_UP);
+
+            while (opModeIsActive() && (runtime.seconds() < 0.2)) {
+                frontLeft.setPower(-0.25);
+                backLeft.setPower(-0.25);
+                frontRight.setPower(0.25);
+                backRight.setPower(0.25);
+            }
         }
+        else {
+            //turns for 0.2 seconds
+            while (opModeIsActive() && (runtime.seconds() < 0.2)) {
+                frontLeft.setPower(-0.25);
+                backLeft.setPower(-0.25);
+                frontRight.setPower(0.25);
+                backRight.setPower(0.25);
+            }
+
+            //moving jewel push back to home
+            pushJewel.setPosition(JEWEL_UP);
+
+            while (opModeIsActive() && (runtime.seconds() < 0.2)) {
+                frontLeft.setPower(0.25);
+                backLeft.setPower(0.25);
+                frontRight.setPower(-0.25);
+                backRight.setPower(-0.25);
+            }
+        }
+
+
+
         //Moves robot into safe zone
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 1.0)) {
