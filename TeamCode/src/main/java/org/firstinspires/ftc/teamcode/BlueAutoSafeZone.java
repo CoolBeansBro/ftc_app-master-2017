@@ -3,14 +3,13 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
  * Created by Aniketh on 11/16/2017.
  */
 @Autonomous
-public class AutoSafeZone extends LinearOpMode {
+public class BlueAutoSafeZone extends LinearOpMode {
     DcMotor frontLeft;
     DcMotor frontRight;
     DcMotor backLeft;
@@ -33,11 +32,11 @@ public class AutoSafeZone extends LinearOpMode {
 
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 1.0)) {
-            frontLeft.setPower(0.5);
-            backLeft.setPower(0.5);
-            frontRight.setPower(0.5);
-            backRight.setPower(0.5);
+            frontLeft.setPower(-0.5);
+            backLeft.setPower(-0.5);
+            frontRight.setPower(-0.5);
+            backRight.setPower(-0.5);
         }
-        
+
     }
 }
