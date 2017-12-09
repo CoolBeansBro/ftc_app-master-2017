@@ -6,9 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
-/**
- * Created by Us on 11/2/2017.
- */
+
 
 @TeleOp(name = "tankDrive", group = "Tank")
 public class tankDrive extends OpMode {
@@ -27,7 +25,7 @@ public class tankDrive extends OpMode {
 
     public final static double RIGHT_HOME = 0.75; // starting servo position
     public final static double RIGHT_IN = 0.75; //smallest servo value(0)
-    public final static double RIGHT_OUT = 0.0;// largest servo value(135)
+    public final static double RIGHT_OUT = 0.0;/// largest servo value(135)
 
     public final static double ARM_UP = 0.0;
     public final static double ARM_DOWN = 0.6;
