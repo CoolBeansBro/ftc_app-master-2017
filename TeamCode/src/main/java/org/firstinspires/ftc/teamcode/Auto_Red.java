@@ -46,6 +46,8 @@ public class Auto_Red extends LinearOpMode {
         waitForStart();
 
 
+
+
         //moving jewel push inbetween jewels
         pushJewel.setPosition(JEWEL_DOWN);
 

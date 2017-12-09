@@ -17,6 +17,7 @@ public class tankDrive extends OpMode {
     DcMotor frontRight;
     DcMotor backLeft;
     DcMotor backRight;
+    Servo jewelArm;
     Servo left;
     Servo right;
 
@@ -28,22 +29,25 @@ public class tankDrive extends OpMode {
     public final static double RIGHT_IN = 0.75; //smallest servo value(0)
     public final static double RIGHT_OUT = 0.0;// largest servo value(135)
 
- @Override
+    public final static double ARM_UP = 0.0;
+    public final static double ARM_DOWN = 0.6;
+
+    @Override
     public void init() {
         backRight = hardwareMap.dcMotor.get("motor3");
         backLeft = hardwareMap.dcMotor.get("motor1");
         frontRight = hardwareMap.dcMotor.get("motor2");
         frontLeft = hardwareMap.dcMotor.get("motor0");
-        left = hardwareMap.servo.get("servo0");
-        right = hardwareMap.servo.get("servo1");
-
+        jewelArm = hardwareMap.servo.get("servo0");
+        left = hardwareMap.servo.get("servo1");
+        right = hardwareMap.servo.get("servo2");
         backLeft.setDirection(DcMotor.Direction.REVERSE);
         frontLeft.setDirection(DcMotor.Direction.REVERSE);
 
         left.setPosition(LEFT_HOME);
         right.setPosition(RIGHT_HOME);
 
-
+        jewelArm.setPosition(ARM_UP);
 
  }
 
