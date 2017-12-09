@@ -111,7 +111,7 @@ public class AutoBlue extends LinearOpMode {
             runtime.reset();
 
 
-            while (opModeIsActive() && (runtime.seconds() < 0.25)) {
+            while (opModeIsActive() && (runtime.seconds() < 0.7)) {
                 frontLeft.setPower(0.25);
                 backLeft.setPower(0.25);
                 frontRight.setPower(-0.25);
