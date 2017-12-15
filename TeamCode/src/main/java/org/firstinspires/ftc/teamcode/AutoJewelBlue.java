@@ -57,30 +57,37 @@ public class AutoJewelBlue extends LinearOpMode {
 
         if (color.red() > color.blue()){
             while(opModeIsActive() && gyroHeading < 45){
-                frontLeft.setPower(-0.25);
-                backLeft.setPower(-0.25);
-                frontRight.setPower(0.25);
-                backRight.setPower(0.25);
                 if (gyro.getHeading() < 180){
-                    gyroHeading = gyro.getHeading();
+                    frontLeft.setPower(-0.25);
+                    backLeft.setPower(-0.25);
+                    frontRight.setPower(0.25);
+                    backRight.setPower(0.25);
                 }
                 else{
-                    gyroHeading = gyro.getHeading() - 360;
+                    frontLeft.setPower(0.25);
+                    backLeft.setPower(0.25);
+                    frontRight.setPower(-0.25);
+                    backRight.setPower(-0.25);
                 }
             }
 
         }
         else {
             while(opModeIsActive() && gyroHeading < -45){
-                frontLeft.setPower(0.25);
-                backLeft.setPower(0.25);
-                frontRight.setPower(-0.25);
-                backRight.setPower(-0.25);
+
                 if (gyro.getHeading() < 180){
-                    gyroHeading = gyro.getHeading();
-                }
-                else{
-                    gyroHeading = gyro.getHeading() - 360;
+                    if (gyro.getHeading() < 180){
+                        frontLeft.setPower(0.25);
+                        backLeft.setPower(0.25);
+                        frontRight.setPower(-0.25);
+                        backRight.setPower(-0.25);
+                    }
+                    else{
+                        frontLeft.setPower(-0.25);
+                        backLeft.setPower(-0.25);
+                        frontRight.setPower(0.25);
+                        backRight.setPower(0.25);
+                    }
                 }
             }
 
