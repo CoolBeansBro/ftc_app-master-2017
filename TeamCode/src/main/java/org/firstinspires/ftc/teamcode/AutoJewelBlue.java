@@ -86,7 +86,17 @@ public class AutoJewelBlue extends LinearOpMode {
 
         }
 
+        jewel.setPosition(JEWEL_UP);
 
+        //Moves robot into safe zone
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 1.0)) {
+            frontLeft.setPower(-0.5);
+            backLeft.setPower(-0.5);
+            frontRight.setPower(-0.5);
+            backRight.setPower(-0.5);
+
+        }
     }
 }
 

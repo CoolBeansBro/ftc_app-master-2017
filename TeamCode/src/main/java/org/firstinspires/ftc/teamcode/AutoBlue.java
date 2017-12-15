@@ -34,8 +34,8 @@ public class AutoBlue extends LinearOpMode {
         frontLeft = hardwareMap.dcMotor.get("motor0");
         pushJewel = hardwareMap.servo.get("pushJewel");
         colorSensor = hardwareMap.get(ColorSensor.class, "colorSensor");
-        leftGrabber = hardwareMap.servo.get("leftGrabber")
-        rightGrabber = hardwareMap.servo.get("rightGrabber")
+        leftGrabber = hardwareMap.servo.get("leftGrabber");
+        rightGrabber = hardwareMap.servo.get("rightGrabber");
         backLeft.setDirection(DcMotor.Direction.REVERSE);
         frontLeft.setDirection(DcMotor.Direction.REVERSE);
 
