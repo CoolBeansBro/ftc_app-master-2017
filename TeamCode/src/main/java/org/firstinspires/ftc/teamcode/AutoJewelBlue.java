@@ -75,14 +75,14 @@ public class AutoJewelBlue extends LinearOpMode {
         else {
             while(opModeIsActive() && gyroHeading < -45){
 
-                if (gyro.getHeading() < 180){
-                    if (gyro.getHeading() < 180){
+                if (gyro.getHeading() < 180 && runtime.seconds() <= 5){
                         frontLeft.setPower(0.25);
                         backLeft.setPower(0.25);
                         frontRight.setPower(-0.25);
                         backRight.setPower(-0.25);
                     }
                     else{
+                    while(opModeIsActive() && runtime.seconds() <= 5){
                         frontLeft.setPower(-0.25);
                         backLeft.setPower(-0.25);
                         frontRight.setPower(0.25);
