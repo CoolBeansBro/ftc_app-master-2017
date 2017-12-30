@@ -22,7 +22,7 @@ public class AutoJewelBlue extends LinearOpMode {
     DcMotor frontRight;
     DcMotor backLeft;
     DcMotor backRight;
-    Servo jewel;
+    Servo jewelArm;
     ColorSensor color;
     GyroSensor gyro;
 
@@ -40,7 +40,7 @@ public class AutoJewelBlue extends LinearOpMode {
         backLeft = hardwareMap.dcMotor.get("motor1");
         frontRight = hardwareMap.dcMotor.get("motor2");
         frontLeft = hardwareMap.dcMotor.get("motor0");
-        jewel = hardwareMap.servo.get("servo2");
+        jewelArm = hardwareMap.servo.get("servo2");
         color = hardwareMap.colorSensor.get("sensor0");
         gyro = hardwareMap.gyroSensor.get("sensor1");
 
@@ -48,12 +48,12 @@ public class AutoJewelBlue extends LinearOpMode {
         backLeft.setDirection(DcMotor.Direction.REVERSE);
         frontLeft.setDirection(DcMotor.Direction.REVERSE);
 
-        jewel.setPosition(JEWEL_UP);
+        jewelArm.setPosition(JEWEL_UP);
 
         gyro.calibrate();
         waitForStart();
 
-        jewel.setPosition(JEWEL_DOWN);
+        jewelArm.setPosition(JEWEL_DOWN);
 
         if (color.red() > color.blue()){
             while(opModeIsActive() && gyroHeading < 45){
@@ -93,7 +93,7 @@ public class AutoJewelBlue extends LinearOpMode {
 
         }
 
-        jewel.setPosition(JEWEL_UP);
+        jewelArm.setPosition(JEWEL_UP);
 
         //Moves robot into safe zone
         runtime.reset();

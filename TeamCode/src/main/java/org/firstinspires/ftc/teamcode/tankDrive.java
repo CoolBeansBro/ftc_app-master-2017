@@ -15,9 +15,10 @@ public class tankDrive extends OpMode {
     DcMotor frontRight;
     DcMotor backLeft;
     DcMotor backRight;
+    DcMotor glyph;
     Servo jewelArm;
-    Servo left;
-    Servo right;
+    Servo leftGrabber;
+    Servo rightGrabber;
 
     public final static double LEFT_HOME = 0.0; // starting servo position
     public final static double LEFT_IN = 0.0; //smallest servo value(0)
@@ -37,13 +38,13 @@ public class tankDrive extends OpMode {
         frontRight = hardwareMap.dcMotor.get("motor2");
         frontLeft = hardwareMap.dcMotor.get("motor0");
         jewelArm = hardwareMap.servo.get("servo0");
-        left = hardwareMap.servo.get("servo1");
-        right = hardwareMap.servo.get("servo2");
+        leftGrabber = hardwareMap.servo.get("servo1");
+        rightGrabber = hardwareMap.servo.get("servo2");
         backLeft.setDirection(DcMotor.Direction.REVERSE);
         frontLeft.setDirection(DcMotor.Direction.REVERSE);
 
-        left.setPosition(LEFT_HOME);
-        right.setPosition(RIGHT_HOME);
+        leftGrabber.setPosition(LEFT_HOME);
+        rightGrabber.setPosition(RIGHT_HOME);
 
         jewelArm.setPosition(ARM_UP);
 
@@ -58,14 +59,18 @@ public class tankDrive extends OpMode {
         backRight.setPower(-gamepad1.right_stick_y/2.0);
 
         if (gamepad2.a) {
-            left.setPosition(LEFT_IN);
-            right.setPosition(RIGHT_IN);
+            leftGrabber.setPosition(LEFT_IN);
+            rightGrabber.setPosition(RIGHT_IN);
         }
        if (gamepad2.x) {
-            left.setPosition(LEFT_OUT);
-            right.setPosition(RIGHT_OUT);
+            leftGrabber.setPosition(LEFT_OUT);
+            rightGrabber.setPosition(RIGHT_OUT);
 
        }
-
+        if (gamepad2.y) {
+            jewelArm.setPosition(ARM_DOWN);
+        }
+       glyph.setPower(-gamepad2.left_stick_y/2.0);
+       jewelArm.setPosition(-gamepad2.right_stick_y/2.0);
     }
 }

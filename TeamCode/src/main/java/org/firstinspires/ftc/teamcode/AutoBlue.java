@@ -17,7 +17,7 @@ public class AutoBlue extends LinearOpMode {
     DcMotor backLeft;
     DcMotor backRight;
     ColorSensor colorSensor;
-    Servo pushJewel;
+    Servo jewelArm;
     Servo leftGrabber;
     Servo rightGrabber;
 
@@ -32,7 +32,7 @@ public class AutoBlue extends LinearOpMode {
         backLeft = hardwareMap.dcMotor.get("motor1");
         frontRight = hardwareMap.dcMotor.get("motor2");
         frontLeft = hardwareMap.dcMotor.get("motor0");
-        pushJewel = hardwareMap.servo.get("pushJewel");
+        jewelArm = hardwareMap.servo.get("pushJewel");
         colorSensor = hardwareMap.get(ColorSensor.class, "colorSensor");
         leftGrabber = hardwareMap.servo.get("leftGrabber");
         rightGrabber = hardwareMap.servo.get("rightGrabber");
@@ -44,14 +44,14 @@ public class AutoBlue extends LinearOpMode {
 
         colorSensor.enableLed(bLedOn);
 
-        pushJewel.setPosition(JEWEL_UP);
+        jewelArm.setPosition(JEWEL_UP);
 
 
         waitForStart();
 
 
         //moving jewel push inbetween jewels
-        pushJewel.setPosition(JEWEL_DOWN);
+        jewelArm.setPosition(JEWEL_DOWN);
 
         runtime.reset();
 
@@ -76,7 +76,7 @@ public class AutoBlue extends LinearOpMode {
             runtime.reset();
             while(opModeIsActive() && runtime.seconds() < 1){}
             //moving jewel push back to home
-            pushJewel.setPosition(JEWEL_UP);
+            jewelArm.setPosition(JEWEL_UP);
             runtime.reset();
             while(opModeIsActive() && runtime.seconds() < 1){}
             runtime.reset();
@@ -109,7 +109,7 @@ public class AutoBlue extends LinearOpMode {
             runtime.reset();
             while(opModeIsActive() && runtime.seconds() < 1){}
             //moving jewel push back to home
-            pushJewel.setPosition(JEWEL_UP);
+            jewelArm.setPosition(JEWEL_UP);
             runtime.reset();
             while(opModeIsActive() && runtime.seconds() < 1){}
             runtime.reset();

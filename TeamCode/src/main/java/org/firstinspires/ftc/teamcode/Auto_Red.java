@@ -17,7 +17,7 @@ public class Auto_Red extends LinearOpMode {
     DcMotor backLeft;
     DcMotor backRight;
     ColorSensor colorSensor;
-    Servo pushJewel;
+    Servo jewelArm;
     public final static double JEWEL_UP = 0.0; //smallest servo value(0)
     public final static double JEWEL_DOWN = 0.6;// largest servo value(135)
     private ElapsedTime runtime = new ElapsedTime();
@@ -29,7 +29,7 @@ public class Auto_Red extends LinearOpMode {
         backLeft = hardwareMap.dcMotor.get("motor1");
         frontRight = hardwareMap.dcMotor.get("motor2");
         frontLeft = hardwareMap.dcMotor.get("motor0");
-        pushJewel = hardwareMap.servo.get("pushJewel");
+        jewelArm = hardwareMap.servo.get("pushJewel");
         colorSensor = hardwareMap.get(ColorSensor.class, "colorSensor");
 
         backLeft.setDirection(DcMotor.Direction.REVERSE);
@@ -40,7 +40,7 @@ public class Auto_Red extends LinearOpMode {
 
         colorSensor.enableLed(bLedOn);
 
-        pushJewel.setPosition(JEWEL_UP);
+        jewelArm.setPosition(JEWEL_UP);
 
 
         waitForStart();
@@ -49,7 +49,7 @@ public class Auto_Red extends LinearOpMode {
 
 
         //moving jewel push inbetween jewels
-        pushJewel.setPosition(JEWEL_DOWN);
+        jewelArm.setPosition(JEWEL_DOWN);
 
         runtime.reset();
 
@@ -74,7 +74,7 @@ public class Auto_Red extends LinearOpMode {
             runtime.reset();
             while(opModeIsActive() && runtime.seconds() < 1){}
             //moving jewel push back to home
-            pushJewel.setPosition(JEWEL_UP);
+            jewelArm.setPosition(JEWEL_UP);
             runtime.reset();
             while(opModeIsActive() && runtime.seconds() < 1){}
             runtime.reset();
@@ -107,7 +107,7 @@ public class Auto_Red extends LinearOpMode {
             runtime.reset();
             while(opModeIsActive() && runtime.seconds() < 1){}
             //moving jewel push back to home
-            pushJewel.setPosition(JEWEL_UP);
+            jewelArm.setPosition(JEWEL_UP);
             runtime.reset();
             while(opModeIsActive() && runtime.seconds() < 1){}
             runtime.reset();
