@@ -16,8 +16,8 @@ public class tankDrive extends OpMode {
     DcMotor backLeft;
     DcMotor backRight;
     Servo jewelArm;
-    //Servo left;
-    //Servo right;
+    Servo left;
+    Servo right;
 
     public final static double LEFT_HOME = 0.0; // starting servo position
     public final static double LEFT_IN = 0.0; //smallest servo value(0)
@@ -37,13 +37,13 @@ public class tankDrive extends OpMode {
         frontRight = hardwareMap.dcMotor.get("motor2");
         frontLeft = hardwareMap.dcMotor.get("motor0");
         jewelArm = hardwareMap.servo.get("servo0");
-        //left = hardwareMap.servo.get("servo1");
-        //right = hardwareMap.servo.get("servo2");
+        left = hardwareMap.servo.get("servo1");
+        right = hardwareMap.servo.get("servo2");
         backLeft.setDirection(DcMotor.Direction.REVERSE);
         frontLeft.setDirection(DcMotor.Direction.REVERSE);
 
-        //left.setPosition(LEFT_HOME);
-        //right.setPosition(RIGHT_HOME);
+        left.setPosition(LEFT_HOME);
+        right.setPosition(RIGHT_HOME);
 
         jewelArm.setPosition(ARM_UP);
 
@@ -57,7 +57,7 @@ public class tankDrive extends OpMode {
         frontRight.setPower(-gamepad1.right_stick_y/2.0);
         backRight.setPower(-gamepad1.right_stick_y/2.0);
 
-       /* if (gamepad2.a) {
+        if (gamepad2.a) {
             left.setPosition(LEFT_IN);
             right.setPosition(RIGHT_IN);
         }
@@ -65,7 +65,7 @@ public class tankDrive extends OpMode {
             left.setPosition(LEFT_OUT);
             right.setPosition(RIGHT_OUT);
 
-       }*/
+       }
 
     }
 }
