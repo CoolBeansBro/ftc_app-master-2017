@@ -40,9 +40,10 @@ public class AutoJewelRed extends LinearOpMode {
         backLeft = hardwareMap.dcMotor.get("motor1");
         frontRight = hardwareMap.dcMotor.get("motor2");
         frontLeft = hardwareMap.dcMotor.get("motor0");
-        jewelArm = hardwareMap.servo.get("servo2");
-        color = hardwareMap.colorSensor.get("sensor0");
-        gyro = hardwareMap.gyroSensor.get("sensor1");
+        jewelArm = hardwareMap.servo.get("servo0");
+        gyro = hardwareMap.gyroSensor.get("sensor0");
+        color = hardwareMap.colorSensor.get("sensor1");
+
 
 
         backLeft.setDirection(DcMotor.Direction.REVERSE);
