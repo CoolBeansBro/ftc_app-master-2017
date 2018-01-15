@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
-
+import org.firstinspires.ftc.robotcontroller.external.samples.SensorDigitalTouch;
 
 
 @TeleOp(name = "tankDrive", group = "Tank")
@@ -19,6 +19,7 @@ public class tankDrive extends OpMode {
     Servo jewelArm;
     Servo leftGrabber;
     Servo rightGrabber;
+    SensorDigitalTouch stop;
 
     public final static double LEFT_HOME = 0.0; // starting servo position
     public final static double LEFT_IN = 0.0; //smallest servo value(0)
@@ -41,6 +42,7 @@ public class tankDrive extends OpMode {
         leftGrabber = hardwareMap.servo.get("leftGrabber");
         rightGrabber = hardwareMap.servo.get("rightGrabber");
         glyph = hardwareMap.dcMotor.get("glyph");
+        stop = hardwareMap.get(DigitalChannel.class,stop");
         backLeft.setDirection(DcMotor.Direction.REVERSE);
         frontLeft.setDirection(DcMotor.Direction.REVERSE);
 
@@ -75,8 +77,12 @@ public class tankDrive extends OpMode {
             jewelArm.setPosition(ARM_DOWN);
 
         }
-
-       glyph.setPower(gamepad2.left_stick_y/2.0);
+        if  (gamepad2.left_stick_y {
+            glyph.setPower(gamepad2.left_stick_y/2.0);
+        }
+        else{
+            glyph.setPower(0.0);
+        }
        jewelArm.setPosition(-gamepad2.right_stick_y/2.0);
     }
 }
