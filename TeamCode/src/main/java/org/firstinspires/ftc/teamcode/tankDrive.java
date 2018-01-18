@@ -42,8 +42,8 @@ public class tankDrive extends OpMode {
         leftGrabber = hardwareMap.servo.get("leftGrabber");
         rightGrabber = hardwareMap.servo.get("rightGrabber");
         glyph = hardwareMap.dcMotor.get("glyph");
-        stop = hardwareMap.get(DigitalChannel.class,stop");
-        backLeft.setDirection(DcMotor.Direction.REVERSE);
+        //stop = hardwareMap.get(DigitalChannel.class,stop");
+                backLeft.setDirection(DcMotor.Direction.REVERSE);
         frontLeft.setDirection(DcMotor.Direction.REVERSE);
 
         leftGrabber.setPosition(LEFT_HOME);
@@ -51,7 +51,7 @@ public class tankDrive extends OpMode {
 
         jewelArm.setPosition(ARM_UP);
 
- }
+    }
 
     @Override
     public void loop() {
@@ -69,7 +69,7 @@ public class tankDrive extends OpMode {
             leftGrabber.setPosition(LEFT_OUT);
             rightGrabber.setPosition(RIGHT_OUT);
 
-       }
+        }
         if  (gamepad2.y) {
             jewelArm.setPosition(ARM_UP);
         }
@@ -77,12 +77,12 @@ public class tankDrive extends OpMode {
             jewelArm.setPosition(ARM_DOWN);
 
         }
-        if  (gamepad2.left_stick_y {
+       /* if  (stop.){
             glyph.setPower(gamepad2.left_stick_y/2.0);
         }
         else{
             glyph.setPower(0.0);
-        }
-       jewelArm.setPosition(-gamepad2.right_stick_y/2.0);
+        }*/
+        jewelArm.setPosition(-gamepad2.right_stick_y/2.0);
     }
 }
