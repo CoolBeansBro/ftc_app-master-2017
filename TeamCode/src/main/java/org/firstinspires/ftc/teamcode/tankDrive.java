@@ -1,11 +1,9 @@
 package org.firstinspires.ftc.teamcode;
-
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
-import org.firstinspires.ftc.robotcontroller.external.samples.SensorDigitalTouch;
+import com.qualcomm.robotcore.hardware.TouchSensor;
 
 
 @TeleOp(name = "tankDrive", group = "Tank")
@@ -19,7 +17,7 @@ public class tankDrive extends OpMode {
     Servo jewelArm;
     Servo leftGrabber;
     Servo rightGrabber;
-    SensorDigitalTouch stop;
+    TouchSensor stop;
 
     public final static double LEFT_HOME = 0.0; // starting servo position
     public final static double LEFT_IN = 0.0; //smallest servo value(0)
@@ -42,7 +40,7 @@ public class tankDrive extends OpMode {
         leftGrabber = hardwareMap.servo.get("leftGrabber");
         rightGrabber = hardwareMap.servo.get("rightGrabber");
         glyph = hardwareMap.dcMotor.get("glyph");
-        //stop = hardwareMap.get(DigitalChannel.class,stop");
+        stop = hardwareMap.touchSensor.get("stop");
         backLeft.setDirection(DcMotor.Direction.REVERSE);
         jewelArm = hardwareMap.servo.get("servo0");
         leftGrabber = hardwareMap.servo.get("servo1");
@@ -58,6 +56,8 @@ public class tankDrive extends OpMode {
 
     @Override
     public void loop() {
+
+        telemetry.addData("isPressed",String.valueOf(stop.isPressed()));
 
         frontLeft.setPower(-gamepad1.left_stick_y/2.0);
         backLeft.setPower(-gamepad1.left_stick_y/2.0);
@@ -81,14 +81,12 @@ public class tankDrive extends OpMode {
         if (gamepad2.y) {
             jewelArm.setPosition(ARM_DOWN);
         }
-       /* if  (stop.){
-            glyph.setPower(gamepad2.left_stick_y/2.0);
+        if  (stop.isPressed()){
+            glyph.setPower(0.0);
         }
         else{
-            glyph.setPower(0.0);
-        }*/
+            glyph.setPower(gamepad2.left_stick_y/2.0);
+        }
         jewelArm.setPosition(-gamepad2.right_stick_y/2.0);
-       glyph.setPower(-gamepad2.left_stick_y/2.0);
-       jewelArm.setPosition(-gamepad2.right_stick_y/2.0);
     }
 }
