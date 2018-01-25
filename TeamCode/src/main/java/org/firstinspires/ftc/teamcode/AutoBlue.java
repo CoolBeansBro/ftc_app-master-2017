@@ -32,10 +32,10 @@ public class AutoBlue extends LinearOpMode {
         backLeft = hardwareMap.dcMotor.get("motor1");
         frontRight = hardwareMap.dcMotor.get("motor2");
         frontLeft = hardwareMap.dcMotor.get("motor0");
-        jewelArm = hardwareMap.servo.get("pushJewel");
+        jewelArm = hardwareMap.servo.get("servo0");
         colorSensor = hardwareMap.get(ColorSensor.class, "colorSensor");
-        leftGrabber = hardwareMap.servo.get("leftGrabber");
-        rightGrabber = hardwareMap.servo.get("rightGrabber");
+        leftGrabber = hardwareMap.servo.get("servo1");
+        rightGrabber = hardwareMap.servo.get("servo2");
         backLeft.setDirection(DcMotor.Direction.REVERSE);
         frontLeft.setDirection(DcMotor.Direction.REVERSE);
 
@@ -62,7 +62,7 @@ public class AutoBlue extends LinearOpMode {
 
         if (colorSensor.red() > colorSensor.blue()){
             //turns for 0.2 seconds
-            while (opModeIsActive() && (runtime.seconds() < 0.2)) {
+            while (opModeIsActive() && (runtime.seconds() < 0.25)) {
                 frontLeft.setPower(0.25);
                 backLeft.setPower(0.25);
                 frontRight.setPower(-0.25);
@@ -75,14 +75,14 @@ public class AutoBlue extends LinearOpMode {
 
             runtime.reset();
             while(opModeIsActive() && runtime.seconds() < 1){}
-            //moving jewel push back to home
+            //moving jewel arm back to home
             jewelArm.setPosition(JEWEL_UP);
             runtime.reset();
             while(opModeIsActive() && runtime.seconds() < 1){}
             runtime.reset();
 
 
-            while (opModeIsActive() && (runtime.seconds() < 0.2)) {
+            while (opModeIsActive() && (runtime.seconds() < 0.25)) {
                 frontLeft.setPower(-0.25);
                 backLeft.setPower(-0.25);
                 frontRight.setPower(0.25);
@@ -115,7 +115,7 @@ public class AutoBlue extends LinearOpMode {
             runtime.reset();
 
 
-            while (opModeIsActive() && (runtime.seconds() < 0.7)) {
+            while (opModeIsActive() && (runtime.seconds() < 0.25)) {
                 frontLeft.setPower(0.25);
                 backLeft.setPower(0.25);
                 frontRight.setPower(-0.25);

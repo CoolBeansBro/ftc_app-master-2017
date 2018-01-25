@@ -10,6 +10,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.SensorColor;
 
+import java.util.Queue;
+
 /**
  * Created by Aniketh on 11/18/2017.
  */
@@ -23,7 +25,7 @@ public class AutoJewelBlue extends LinearOpMode {
     DcMotor backLeft;
     DcMotor backRight;
     Servo jewelArm;
-    ColorSensor color;
+    ColorSensor colorSensor;
     GyroSensor gyro;
 
     private ElapsedTime runtime = new ElapsedTime();
@@ -41,7 +43,11 @@ public class AutoJewelBlue extends LinearOpMode {
         frontRight = hardwareMap.dcMotor.get("motor2");
         frontLeft = hardwareMap.dcMotor.get("motor0");
         jewelArm = hardwareMap.servo.get("servo2");
-        color = hardwareMap.colorSensor.get("sensor0");
+
+
+
+        colorSensor = hardwareMap.get(ColorSensor.class, "colorSensor");
+
         gyro = hardwareMap.gyroSensor.get("sensor1");
 
 
@@ -55,23 +61,18 @@ public class AutoJewelBlue extends LinearOpMode {
 
         jewelArm.setPosition(JEWEL_DOWN);
 
-        if (color.red() > color.blue()){
+        if (colorSensor.red() > colorSensor.blue()){
             while(opModeIsActive() && gyroHeading < 45){
-                if (gyro.getHeading() < 180){
+
                     frontLeft.setPower(-0.25);
                     backLeft.setPower(-0.25);
                     frontRight.setPower(0.25);
                     backRight.setPower(0.25);
-                }
-                else{
-                    frontLeft.setPower(0.25);
-                    backLeft.setPower(0.25);
-                    frontRight.setPower(-0.25);
-                    backRight.setPower(-0.25);
+
                 }
             }
 
-        }
+
         else {
             while(opModeIsActive() && gyroHeading < -45){
 
@@ -97,7 +98,7 @@ public class AutoJewelBlue extends LinearOpMode {
 
         //Moves robot into safe zone
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.0)) {
+        while (opModeIsActive() && (runtime.seconds() < 0.8)) {
             frontLeft.setPower(-0.5);
             backLeft.setPower(-0.5);
             frontRight.setPower(-0.5);
