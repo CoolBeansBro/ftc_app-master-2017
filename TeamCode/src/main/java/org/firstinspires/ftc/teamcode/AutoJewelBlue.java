@@ -48,7 +48,7 @@ public class AutoJewelBlue extends LinearOpMode {
 
         colorSensor = hardwareMap.get(ColorSensor.class, "colorSensor");
 
-        gyro = hardwareMap.gyroSensor.get("sensor1");
+        gyro = hardwareMap.gyroSensor.get("imu");
 
 
         backLeft.setDirection(DcMotor.Direction.REVERSE);

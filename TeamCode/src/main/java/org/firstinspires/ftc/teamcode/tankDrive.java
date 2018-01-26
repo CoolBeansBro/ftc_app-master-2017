@@ -20,11 +20,11 @@ public class tankDrive extends LinearOpMode {
     Servo rightGrabber;
     DigitalChannel stop;
 
-    public final static double LEFT_HOME = 0.25; // starting servo position
+    public final static double LEFT_HOME = 1; // starting servo position
     public final static double LEFT_IN = 0.75; //smallest servo value
     public final static double LEFT_OUT = 0.25;// largest servo value
 
-    public final static double RIGHT_HOME = 0.75; // starting servo position
+    public final static double RIGHT_HOME = 0; // starting servo position
     public final static double RIGHT_IN = 0.25; //smallest servo value
     public final static double RIGHT_OUT = 0.75;/// largest servo val
 
@@ -57,12 +57,12 @@ public class tankDrive extends LinearOpMode {
 
         jewelArm.setPosition(ARM_UP);
 
-        while (stop.getState() == true && opModeIsActive()) {
+        while (stop.getState() == true) {
             glyph.setPower(-0.5);
         }
         runtime.reset();
 
-        while(runtime.seconds() > 2.0 && opModeIsActive()) {
+        while(runtime.seconds() > 2.0) {
             glyph.setPower(0.5);
         }
 
@@ -72,10 +72,10 @@ public class tankDrive extends LinearOpMode {
         while (opModeIsActive()) {
 
 
-            frontLeft.setPower(-gamepad1.left_stick_y / 2.0);
-            backLeft.setPower(-gamepad1.left_stick_y / 2.0);
-            frontRight.setPower(-gamepad1.right_stick_y / 2.0);
-            backRight.setPower(-gamepad1.right_stick_y / 2.0);
+            frontLeft.setPower(-gamepad1.left_stick_y / 2.5);
+            backLeft.setPower(-gamepad1.left_stick_y / 2.5);
+            frontRight.setPower(-gamepad1.right_stick_y / 2.5);
+            backRight.setPower(-gamepad1.right_stick_y / 2.5);
 
             if (gamepad2.a) {
                 leftGrabber.setPosition(LEFT_IN);
