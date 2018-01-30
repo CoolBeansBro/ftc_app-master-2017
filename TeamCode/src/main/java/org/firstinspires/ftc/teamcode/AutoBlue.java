@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
- * Created by Aniketh on 11/16/2017.
+ * Created by Mayank on 11/16/2017.
  */
 @Autonomous
 public class AutoBlue extends LinearOpMode {
@@ -17,27 +17,11 @@ public class AutoBlue extends LinearOpMode {
     DcMotor frontRight;
     DcMotor backLeft;
     DcMotor backRight;
-    DcMotor glyph;
-    Servo jewelArm;
-    Servo leftGrabber;
-    Servo rightGrabber;
     ColorSensor colorSensor;
-    DigitalChannel stop;
-
-
-    public final static double LEFT_HOME = 1; // starting servo position
-    public final static double LEFT_IN = 0.75; //smallest servo value
-    public final static double LEFT_OUT = 0.25;// largest servo value
-
-    public final static double RIGHT_HOME = 0; // starting servo position
-    public final static double RIGHT_IN = 0.25; //smallest servo value
-    public final static double RIGHT_OUT = 0.75;/// largest servo val
-
-    public final static double ARM_UP = 0.0;
-    public final static double ARM_DOWN = 0.6;
-
+    Servo jewelArm;
+    public final static double JEWEL_UP = 0.0; //smallest servo value(0)
+    public final static double JEWEL_DOWN = 0.6;// largest servo value(135)
     private ElapsedTime runtime = new ElapsedTime();
-
 
 
     @Override
@@ -48,8 +32,6 @@ public class AutoBlue extends LinearOpMode {
         frontLeft = hardwareMap.dcMotor.get("motor0");
         jewelArm = hardwareMap.servo.get("servo0");
         colorSensor = hardwareMap.get(ColorSensor.class, "colorSensor");
-        leftGrabber = hardwareMap.servo.get("servo1");
-        rightGrabber = hardwareMap.servo.get("servo2");
         backLeft.setDirection(DcMotor.Direction.REVERSE);
         frontLeft.setDirection(DcMotor.Direction.REVERSE);
 
@@ -58,42 +40,31 @@ public class AutoBlue extends LinearOpMode {
 
         colorSensor.enableLed(bLedOn);
 
-        leftGrabber.setPosition(LEFT_HOME);
-        rightGrabber.setPosition(RIGHT_HOME);
+        jewelArm.setPosition(JEWEL_UP);
 
-        jewelArm.setPosition(ARM_UP);
-
-        while (stop.getState() == true) {
-            glyph.setPower(-0.5);
-        }
-        runtime.reset();
-
-        while(runtime.seconds() > 2.0) {
-            glyph.setPower(0.5);
-        }
 
         waitForStart();
 
 
+
+
         //moving jewel push inbetween jewels
-        jewelArm.setPosition(ARM_DOWN);
-
-
-        runtime.reset();
-
-        while (opModeIsActive() && runtime.seconds() < 2) {
-        }
+        jewelArm.setPosition(JEWEL_DOWN);
 
         runtime.reset();
 
+        while(opModeIsActive() && runtime.seconds() < 2){}
 
-        if (colorSensor.red() > colorSensor.blue()) {
+        runtime.reset();
+
+
+        if (colorSensor.red() < colorSensor.blue()){
             //turns for 0.2 seconds
-            while (opModeIsActive() && (runtime.seconds() < 0.25)) {
-                frontLeft.setPower(0.25);
-                backLeft.setPower(0.25);
-                frontRight.setPower(-0.25);
-                backRight.setPower(-0.25);
+            while (opModeIsActive() && (runtime.seconds() < 0.5)) {
+                frontLeft.setPower(-0.1);
+                backLeft.setPower(-0.1);
+                frontRight.setPower(0.1);
+                backRight.setPower(0.1);
             }
             frontLeft.setPower(0);
             backLeft.setPower(0);
@@ -101,96 +72,66 @@ public class AutoBlue extends LinearOpMode {
             backRight.setPower(0);
 
             runtime.reset();
-            while (opModeIsActive() && runtime.seconds() < 1) {
-            }
-            //moving jewel arm back to home
-            jewelArm.setPosition(ARM_UP);
-            runtime.reset();
-            while (opModeIsActive() && runtime.seconds() < 1) {
-            }
-            runtime.reset();
-
-
-            while (opModeIsActive() && (runtime.seconds() < 0.25)) {
-                frontLeft.setPower(-0.25);
-                backLeft.setPower(-0.25);
-                frontRight.setPower(0.25);
-                backRight.setPower(0.25);
-            }
-            frontLeft.setPower(0);
-            backLeft.setPower(0);
-            frontRight.setPower(0);
-            backRight.setPower(0);
-        } else {
-            //turns for 0.2 seconds
-            while (opModeIsActive() && (runtime.seconds() < 0.25)) {
-                frontLeft.setPower(-0.25);
-                backLeft.setPower(-0.25);
-                frontRight.setPower(0.25);
-                backRight.setPower(0.25);
-            }
-            frontLeft.setPower(0);
-            backLeft.setPower(0);
-            frontRight.setPower(0);
-            backRight.setPower(0);
-
-            runtime.reset();
-            while (opModeIsActive() && runtime.seconds() < 1) {
-            }
+            while(opModeIsActive() && runtime.seconds() < 1){}
             //moving jewel push back to home
-            jewelArm.setPosition(ARM_UP);
+            jewelArm.setPosition(JEWEL_UP);
             runtime.reset();
-            while (opModeIsActive() && runtime.seconds() < 1) {
-            }
+            while(opModeIsActive() && runtime.seconds() < 1){}
             runtime.reset();
 
 
-            while (opModeIsActive() && (runtime.seconds() < 0.25)) {
-                frontLeft.setPower(0.3);
-                backLeft.setPower(0.3);
-                frontRight.setPower(-0.3);
-                backRight.setPower(-0.3);
+            while (opModeIsActive() && (runtime.seconds() < 0.5)) {
+                frontLeft.setPower(0.1);
+                backLeft.setPower(0.1);
+                frontRight.setPower(-0.1);
+                backRight.setPower(-0.1);
             }
             frontLeft.setPower(0);
             backLeft.setPower(0);
             frontRight.setPower(0);
             backRight.setPower(0);
         }
+        else {
+            //turns for 0.2 seconds
+            while (opModeIsActive() && (runtime.seconds() < 0.5)) {
+                frontLeft.setPower(0.1);
+                backLeft.setPower(0.1);
+                frontRight.setPower(-0.1);
+                backRight.setPower(-0.1);
+            }
+            frontLeft.setPower(0);
+            backLeft.setPower(0);
+            frontRight.setPower(0);
+            backRight.setPower(0);
+
+            runtime.reset();
+            while(opModeIsActive() && runtime.seconds() < 1){}
+            //moving jewel push back to home
+            jewelArm.setPosition(JEWEL_UP);
+            runtime.reset();
+            while(opModeIsActive() && runtime.seconds() < 1){}
+            runtime.reset();
 
 
-        //Moves back wheels off balancing stone
-        runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.0)) {
-            backLeft.setPower(-0.15);
-            backRight.setPower(-0.15);
+            while (opModeIsActive() && (runtime.seconds() < 0.5)) {
+                frontLeft.setPower(-0.1);
+                backLeft.setPower(-0.1);
+                frontRight.setPower(0.1);
+                backRight.setPower(0.1);
+            }
+            frontLeft.setPower(0);
+            backLeft.setPower(0);
+            frontRight.setPower(0);
+            backRight.setPower(0);
         }
-
-        //turns robot toward safe zone
-        runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.0)) {
-            backLeft.setPower(-0.4);
-            backRight.setPower(0.1);
-        }
-
         //Moves robot into safe zone
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.0)) {
-            frontLeft.setPower(-0.5);
-            backLeft.setPower(-0.5);
-            frontRight.setPower(-0.5);
-            backRight.setPower(-0.5);
+        while (opModeIsActive() && (runtime.seconds() < 1.25)) {
+            frontLeft.setPower(-0.25);
+            backLeft.setPower(-0.25);
+            frontRight.setPower(-0.25);
+            backRight.setPower(-0.25);
         }
-
-        //moves away from crypto box slightly so glyph counts as scored
-        runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.0)) {
-            frontLeft.setPower(0.5);
-            backLeft.setPower(0.5);
-            frontRight.setPower(0.5);
-            backRight.setPower(0.5);
-        }
-
-
 
     }
 }

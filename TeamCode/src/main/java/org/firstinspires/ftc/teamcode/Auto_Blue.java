@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -8,10 +7,10 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
- * Created by Aniketh on 11/16/2017.
+ * Created by mayank.holla on 1/29/18.
  */
-@Autonomous
-public class Auto_Red extends LinearOpMode {
+
+public class Auto_Blue extends LinearOpMode{
     DcMotor frontLeft;
     DcMotor frontRight;
     DcMotor backLeft;
@@ -47,7 +46,7 @@ public class Auto_Red extends LinearOpMode {
 
 
 
-        //moving jewel arm inbetween jewels
+        //moving jewel push inbetween jewels
         jewelArm.setPosition(JEWEL_DOWN);
 
         runtime.reset();
@@ -58,7 +57,7 @@ public class Auto_Red extends LinearOpMode {
 
 
         if (colorSensor.red() > colorSensor.blue()){
-            //turns for 0.5 seconds
+            //turns for 0.2 seconds
             while (opModeIsActive() && (runtime.seconds() < 0.5)) {
                 frontLeft.setPower(-0.1);
                 backLeft.setPower(-0.1);
@@ -123,9 +122,6 @@ public class Auto_Red extends LinearOpMode {
             frontRight.setPower(0);
             backRight.setPower(0);
         }
-
-
-
         //Moves robot into safe zone
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 1.25)) {
@@ -137,4 +133,3 @@ public class Auto_Red extends LinearOpMode {
 
     }
 }
-
