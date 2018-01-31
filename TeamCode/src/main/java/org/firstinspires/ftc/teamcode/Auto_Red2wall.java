@@ -79,7 +79,7 @@ public class Auto_Red2wall extends LinearOpMode {
             runtime.reset();
 
 
-            while (opModeIsActive() && (runtime.seconds() < 0.5)) {
+            while (opModeIsActive() && (runtime.seconds() < 0.25)) {
                 frontLeft.setPower(0.1);
                 backLeft.setPower(0.1);
                 frontRight.setPower(-0.1);
@@ -128,7 +128,7 @@ public class Auto_Red2wall extends LinearOpMode {
 
         //Moves robot into safe zone
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.275)) {
+        while (opModeIsActive() && (runtime.seconds() < 1.75)) {
             frontLeft.setPower(0.25);
             backLeft.setPower(0.25);
             frontRight.setPower(0.25);

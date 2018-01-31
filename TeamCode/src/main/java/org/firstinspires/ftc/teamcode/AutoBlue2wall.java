@@ -92,7 +92,7 @@ public class AutoBlue2wall extends LinearOpMode {
         }
         else {
             //turns for 0.2 seconds
-            while (opModeIsActive() && (runtime.seconds() < 0.5)) {
+            while (opModeIsActive() && (runtime.seconds() < 0.75)) {
                 frontLeft.setPower(0.1);
                 backLeft.setPower(0.1);
                 frontRight.setPower(-0.1);
