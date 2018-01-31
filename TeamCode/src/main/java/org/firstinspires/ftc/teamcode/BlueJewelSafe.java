@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+/*package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -23,12 +23,12 @@ import java.util.Queue;
 
 /**
  * Created by Aniketh on 11/18/2017.
- */
+
 @Autonomous
-public class AutoJewelBlue extends LinearOpMode {
+public class BlueJewelSafe extends LinearOpMode {
     /**
      * Created by Aniketh on 11/16/2017.
-     */
+
     DcMotor frontLeft;
     DcMotor frontRight;
     DcMotor backLeft;
@@ -74,7 +74,7 @@ public class AutoJewelBlue extends LinearOpMode {
 
         imu.initialize(parameters);
 
-       /* void composeTelemetry() {
+        void composeTelemetry() {
 
             // At the beginning of each telemetry update, grab a bunch of data
             // from the IMU that we will then display in separate lines.
@@ -140,52 +140,49 @@ public class AutoJewelBlue extends LinearOpMode {
         jewelArm.setPosition(JEWEL_DOWN);
 
         if (colorSensor.red() > colorSensor.blue()){
-            while(opModeIsActive() /*&& gyroHeading < 45*)*/
-        {
+            while(opModeIsActive() /*&& gyroHeading < 45){
 
-      /*              frontLeft.setPower(-0.25);
-                    backLeft.setPower(-0.25);
-                    frontRight.setPower(0.25);
-                    backRight.setPower(0.25);
+            frontLeft.setPower(-0.25);
+            backLeft.setPower(-0.25);
+            frontRight.setPower(0.25);
+            backRight.setPower(0.25);
 
-                }
-            }
-
-
-     /*   else {
-            while(opModeIsActive() /*&& gyroHeading < -45){
-
-                if (imu.getHeading() < 180 && runtime.seconds() <= 5){
-                        frontLeft.setPower(0.25);
-                        backLeft.setPower(0.25);
-                        frontRight.setPower(-0.25);
-                        backRight.setPower(-0.25);
-                    }
-                    else{
-                    while(opModeIsActive() && runtime.seconds() <= 5){
-                        frontLeft.setPower(-0.25);
-                        backLeft.setPower(-0.25);
-                        frontRight.setPower(0.25);
-                        backRight.setPower(0.25);
-                    }
-                }
-            }
-
-        }
-
-        jewelArm.setPosition(JEWEL_UP);
-
-        //Moves robot into safe zone
-        runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 0.8)) {
-            frontLeft.setPower(-0.5);
-            backLeft.setPower(-0.5);
-            frontRight.setPower(-0.5);
-            backRight.setPower(-0.5);
-
-        }*/
         }
     }
 
+
+        else {
+        while(opModeIsActive() /*&& gyroHeading < -45){
+
+            if (imu.getHeading() < 180 && runtime.seconds() <= 5){
+                frontLeft.setPower(0.25);
+                backLeft.setPower(0.25);
+                frontRight.setPower(-0.25);
+                backRight.setPower(-0.25);
+            }
+            else{
+                while(opModeIsActive() && runtime.seconds() <= 5){
+                    frontLeft.setPower(-0.25);
+                    backLeft.setPower(-0.25);
+                    frontRight.setPower(0.25);
+                    backRight.setPower(0.25);
+                }
+            }
+        }
+
+    }
+
+        jewelArm.setPosition(JEWEL_UP);
+
+    //Moves robot into safe zone
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 0.8)) {
+        frontLeft.setPower(-0.5);
+        backLeft.setPower(-0.5);
+        frontRight.setPower(-0.5);
+        backRight.setPower(-0.5);
+
+    }
 }
+}*/
 
