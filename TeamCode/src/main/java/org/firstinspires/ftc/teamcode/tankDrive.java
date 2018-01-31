@@ -57,14 +57,6 @@ public class tankDrive extends LinearOpMode {
 
         jewelArm.setPosition(ARM_UP);
 
-        while (stop.getState() == true) {
-            glyph.setPower(-0.5);
-        }
-        runtime.reset();
-
-        while(runtime.seconds() > 2.0) {
-            glyph.setPower(0.5);
-        }
 
         waitForStart();
 
