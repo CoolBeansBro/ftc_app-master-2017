@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Created by Aniketh on 11/16/2017.
  */
 @Autonomous
-public class Auto_Red extends LinearOpMode {
+public class Auto_Red1wall extends LinearOpMode {
     DcMotor frontLeft;
     DcMotor frontRight;
     DcMotor backLeft;
