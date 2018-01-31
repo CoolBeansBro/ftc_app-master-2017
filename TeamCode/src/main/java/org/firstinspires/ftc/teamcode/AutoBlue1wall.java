@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
- * Created by Mayank on 11/16/2017.
+ * Created by Aniketh on 11/16/2017.
  */
 @Autonomous
 public class AutoBlue1wall extends LinearOpMode {
