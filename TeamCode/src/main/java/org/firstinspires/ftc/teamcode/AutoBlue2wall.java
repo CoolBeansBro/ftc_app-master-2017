@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -7,10 +8,10 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
- * Created by mayank.holla on 1/29/18.
+ * Created by Mayank on 11/16/2017.
  */
-
-public class Auto_Blue extends LinearOpMode{
+@Autonomous
+public class AutoBlue2wall extends LinearOpMode {
     DcMotor frontLeft;
     DcMotor frontRight;
     DcMotor backLeft;
@@ -18,7 +19,7 @@ public class Auto_Blue extends LinearOpMode{
     ColorSensor colorSensor;
     Servo jewelArm;
     public final static double JEWEL_UP = 0.0; //smallest servo value(0)
-    public final static double JEWEL_DOWN = 0.6;// largest servo value(135)
+    public final static double JEWEL_DOWN = 0.55;// largest servo value(135)
     private ElapsedTime runtime = new ElapsedTime();
 
 
@@ -56,7 +57,7 @@ public class Auto_Blue extends LinearOpMode{
         runtime.reset();
 
 
-        if (colorSensor.red() > colorSensor.blue()){
+        if (colorSensor.red() < colorSensor.blue()){
             //turns for 0.2 seconds
             while (opModeIsActive() && (runtime.seconds() < 0.5)) {
                 frontLeft.setPower(-0.1);
@@ -78,7 +79,7 @@ public class Auto_Blue extends LinearOpMode{
             runtime.reset();
 
 
-            while (opModeIsActive() && (runtime.seconds() < 0.5)) {
+            while (opModeIsActive() && (runtime.seconds() < 0.75)) {
                 frontLeft.setPower(0.1);
                 backLeft.setPower(0.1);
                 frontRight.setPower(-0.1);
@@ -111,7 +112,7 @@ public class Auto_Blue extends LinearOpMode{
             runtime.reset();
 
 
-            while (opModeIsActive() && (runtime.seconds() < 0.5)) {
+            while (opModeIsActive() && (runtime.seconds() < 0.25)) {
                 frontLeft.setPower(-0.1);
                 backLeft.setPower(-0.1);
                 frontRight.setPower(0.1);
@@ -124,12 +125,13 @@ public class Auto_Blue extends LinearOpMode{
         }
         //Moves robot into safe zone
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.25)) {
-            frontLeft.setPower(0.25);
-            backLeft.setPower(0.25);
-            frontRight.setPower(0.25);
-            backRight.setPower(0.25);
+        while (opModeIsActive() && (runtime.seconds() < 1.75)) {
+            frontLeft.setPower(-0.25);
+            backLeft.setPower(-0.25);
+            frontRight.setPower(-0.25);
+            backRight.setPower(-0.25);
         }
 
     }
 }
+
