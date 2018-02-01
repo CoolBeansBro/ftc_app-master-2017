@@ -6,12 +6,11 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
 /**
- * Created by Aniketh on 11/16/2017.
+ * Created by aniketh on 1/31/18.
  */
-@Autonomous
-public class AutoBlue extends LinearOpMode {
+
+public class AutoRed extends LinearOpMode {
     DcMotor frontLeft;
     DcMotor frontRight;
     DcMotor backLeft;
@@ -93,10 +92,10 @@ public class AutoBlue extends LinearOpMode {
 
             //moves towards the safe zone
             while (opModeIsActive() && (runtime.seconds() < 1)) {
-                frontLeft.setPower(-0.1);
-                backLeft.setPower(-0.1);
-                frontRight.setPower(-0.1);
-                backRight.setPower(-0.1);
+                frontLeft.setPower(0.1);
+                backLeft.setPower(0.1);
+                frontRight.setPower(0.1);
+                backRight.setPower(0.1);
             }
             frontLeft.setPower(0);
             backLeft.setPower(0);
@@ -154,4 +153,3 @@ public class AutoBlue extends LinearOpMode {
 
     }
 }
-
