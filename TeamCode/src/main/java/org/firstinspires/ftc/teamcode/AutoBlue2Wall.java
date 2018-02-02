@@ -116,16 +116,7 @@ public class AutoBlue2Wall extends LinearOpMode {
             runtime.reset();
 
 
-      /*      while (opModeIsActive() && (runtime.seconds() < 0.5)) {
-                frontLeft.setPower(-0.1);
-                backLeft.setPower(-0.1);
-                frontRight.setPower(0.1);
-                backRight.setPower(0.1);
-            }
-            frontLeft.setPower(0);
-            backLeft.setPower(0);
-            frontRight.setPower(0);
-            backRight.setPower(0);*/
+
         }
         //Moves robot towards safe zone
         runtime.reset();
