@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Created by Aniketh on 11/16/2017.
  */
 @Autonomous
-public class AutoBlue extends LinearOpMode {
+public class AutoBlueExtra extends LinearOpMode {
     DcMotor frontLeft;
     DcMotor frontRight;
     DcMotor backLeft;
@@ -59,7 +59,7 @@ public class AutoBlue extends LinearOpMode {
 
         if (colorSensor.red() < colorSensor.blue()){
             //turns for 0.2 seconds
-            while (opModeIsActive() && (runtime.seconds() < 0.5)) {
+            while (opModeIsActive() && (runtime.seconds() < 1)) {
                 frontLeft.setPower(-0.1);
                 backLeft.setPower(-0.1);
                 frontRight.setPower(0.1);
@@ -78,8 +78,8 @@ public class AutoBlue extends LinearOpMode {
             while(opModeIsActive() && runtime.seconds() < 1){}
             runtime.reset();
 
-            //turns back to original position and then some so it makes it to the safe zone
-            while (opModeIsActive() && (runtime.seconds() < 0.75)) {
+
+            while (opModeIsActive() && (runtime.seconds() < 1.35)) {
                 frontLeft.setPower(0.1);
                 backLeft.setPower(0.1);
                 frontRight.setPower(-0.1);
@@ -89,28 +89,10 @@ public class AutoBlue extends LinearOpMode {
             backLeft.setPower(0);
             frontRight.setPower(0);
             backRight.setPower(0);
-
-
-            //moves towards the safe zone
-            while (opModeIsActive() && (runtime.seconds() < 1)) {
-                frontLeft.setPower(-0.1);
-                backLeft.setPower(-0.1);
-                frontRight.setPower(-0.1);
-                backRight.setPower(-0.1);
-            }
-            frontLeft.setPower(0);
-            backLeft.setPower(0);
-            frontRight.setPower(0);
-            backRight.setPower(0);
-
-            //puts jewel arm down to land in safe zone
-            jewelArm.setPosition(JEWEL_DOWN);
-
-
         }
         else {
             //turns for 0.2 seconds
-            while (opModeIsActive() && (runtime.seconds() < 0.5)) {
+            while (opModeIsActive() && (runtime.seconds() < 1.55)) {
                 frontLeft.setPower(0.1);
                 backLeft.setPower(0.1);
                 frontRight.setPower(-0.1);
@@ -123,14 +105,14 @@ public class AutoBlue extends LinearOpMode {
 
             runtime.reset();
             while(opModeIsActive() && runtime.seconds() < 1){}
-            //moving jewel arm back to home
+            //moving jewel push back to home
             jewelArm.setPosition(JEWEL_UP);
             runtime.reset();
             while(opModeIsActive() && runtime.seconds() < 1){}
             runtime.reset();
 
 
-      /*      while (opModeIsActive() && (runtime.seconds() < 0.5)) {
+            while (opModeIsActive() && (runtime.seconds() < .30)) {
                 frontLeft.setPower(-0.1);
                 backLeft.setPower(-0.1);
                 frontRight.setPower(0.1);
@@ -139,18 +121,16 @@ public class AutoBlue extends LinearOpMode {
             frontLeft.setPower(0);
             backLeft.setPower(0);
             frontRight.setPower(0);
-            backRight.setPower(0);*/
+            backRight.setPower(0);
         }
-        //Moves robot towards safe zone
+        //Moves robot into safe zone
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.25)) {
+        while (opModeIsActive() && (runtime.seconds() < 1.75)) {
             frontLeft.setPower(-0.25);
             backLeft.setPower(-0.25);
             frontRight.setPower(-0.25);
             backRight.setPower(-0.25);
         }
-        //puts down jewelArm so that it's in safe zone
-        jewelArm.setPosition(JEWEL_DOWN);
 
     }
 }

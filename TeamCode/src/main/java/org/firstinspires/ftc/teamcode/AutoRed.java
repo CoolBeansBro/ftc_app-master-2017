@@ -103,8 +103,13 @@ public class AutoRed extends LinearOpMode {
             backRight.setPower(0);
 
             //puts jewel arm down to land in safe zone
-            jewelArm.setPosition(JEWEL_DOWN);
-
+            runtime.reset();
+            while(opModeIsActive() && runtime.seconds() < 1){}
+            //moving jewel push back to home
+            jewelArm.setPosition(JEWEL_UP);
+            runtime.reset();
+            while(opModeIsActive() && runtime.seconds() < 1){}
+            runtime.reset();
 
         }
         else {
